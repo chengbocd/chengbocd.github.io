@@ -8,16 +8,16 @@ module.exports = {
   plugins: [
     "vuepress-plugin-cat",
   ],
-  // markdown: {
-  //   lineNumbers: true
-  // },
+  markdown: {
+    lineNumbers: true
+  },
   themeConfig: {
     editLinks: true,
     editLinkText: '错别字纠正',
     nav: [
       { text: 'Home', link: '/' },
       { text: '关于', link: '/about' },
-      { text: 'GitHub', link: 'https://github.com/ghrace' },
+      { text: 'GitHub', link: 'https://github.com/chengbocd' },
     ],
     sidebar: [
       {
