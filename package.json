@@ -2,9 +2,8 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy": "bash build/deploy.sh"
+    "deploy": "bash deploy.sh"
   },
-  "license": "ISC",
   "devDependencies": {
     "vuepress": "^1.0.3"
   },

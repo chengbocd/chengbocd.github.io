@@ -4,14 +4,14 @@ set -e
 
 npm run build
 
-cd docs/.vuepress/dist
+cd ../docs/.vuepress/dist
 
 git init
-git config user.name 'ghrace'
-git config user.email 'ghrsevn@live.com'
+git config user.name 'chengbocd'
+git config user.email '1098361667@qq.com'
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:ghrace/ghrace.github.io.git master
+git push -f git@github.com:chengbocd/chengbocd.github.io.git master
 
 cd -
