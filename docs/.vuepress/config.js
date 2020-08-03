@@ -13,7 +13,7 @@ module.exports = {
   },
   themeConfig: {
     editLinks: true,
-    editLinkText: '错别字纠正',
+    editLinkText: '错字纠正',
     nav: [
       { text: 'Home', link: '/' },
       { text: '关于', link: '/about' },
