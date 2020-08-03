@@ -8,6 +8,7 @@ module.exports = {
   plugins: [
     "vuepress-plugin-cat",
   ],
+  
   markdown: {
     lineNumbers: true
   },
