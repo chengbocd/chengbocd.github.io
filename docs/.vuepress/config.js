@@ -1,10 +1,13 @@
 module.exports = {
-  title: "个人网站",
-  description: '郭洪荣的前端学习记录 不仅仅是前端',
+  title: "生而为人，到点上号",
+  description: '记录',
   head: [["link", { rel: "icon", href: '/favicon.ico' }]],
   evergreen: true,
   ga: 'UA-123065311-1',
   dest: 'dist',
+  plugins: [
+    "vuepress-plugin-cat",
+  ],
   // markdown: {
   //   lineNumbers: true
   // },
