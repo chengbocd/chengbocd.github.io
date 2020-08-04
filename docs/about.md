@@ -1,11 +1,11 @@
 ```js
 class Me {
     constructor() {
-    this.name='郭洪荣'
-    this.age=26
+    this.name='cc'
+    this.age=11
     this.contact = [{
-        email:'ghrsevn@live.com',
-        wechat:'18582579805',
+        email:'cc@live.com',
+        wechat:'123',
     }],
   }
 }
