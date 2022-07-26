@@ -1,0 +1,33 @@
+{
+  "name": "my_blog",
+  "version": "1.0.0",
+  "author": "wb",
+  "scripts": {
+    "dev": "vuepress dev . --host \"localhost\"",
+    "build": "vuepress build .",
+    "deploy": "bash deploy.sh"
+  },
+  "devDependencies": {
+    "@vuepress-reco/vuepress-plugin-kan-ban-niang": "^1.0.5",
+    "directory-tree": "^2.2.7",
+    "vuepress": "^1.9.7",
+    "vuepress-plugin-meting": "^0.1.1",
+    "vuepress-theme-reco": "1.5.7"
+  },
+  "dependencies": {
+    "@vuepress-reco/vuepress-plugin-bgm-player": "^1.1.4",
+    "@vuepress-reco/vuepress-plugin-comments": "^1.5.7",
+    "vue-class-component": "^7.2.3"
+  },
+  "description": "--- home: true heroText: dio tagline: wryyyyyyyyyyyyyyy!!! bgImageStyle: {   height: '450px' } isShowTitleInHome: false features: - title: Yesterday   details: 木大 - title: Today   details: 木大 - title: Tomorrow   details: 木大 ---",
+  "main": "index.js",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chengbocd/chengbocd.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chengbocd/chengbocd.github.io/issues"
+  },
+  "homepage": "https://github.com/chengbocd/chengbocd.github.io#readme"
+}
