@@ -1,14 +1,11 @@
 ---
-title: redis简介
+title: redis数据结构
 date: 2020-07-22
 categories:
  - redis
 tags:
- - redis数据结构
+ - redis
 sidebar: 'auto'
----
----
-theme: channing-cyan
 ---
 ### 一、Redis知识系统观
 - Redis从应用维度有：缓存使用、集群运用、数据结构的巧妙使用；

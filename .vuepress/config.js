@@ -1,5 +1,4 @@
 const sidebar = require('./siderbar.js');
-
 module.exports = {
    "devServer": {
         open: true     //编译完成后自动打开浏览器
@@ -25,8 +24,12 @@ module.exports = {
     ]
   ],
     "plugins": [
-        ["@vuepress-reco/vuepress-plugin-comments",],
-        ["vuepress-plugin-meting",],
+    
+        ["vuepress-plugin-code-copy", {
+            align: 'top',
+            successText: '复制成功',
+            staticIcon: true,
+        }],
         [//看板娘 白色猫咪
             '@vuepress-reco/vuepress-plugin-kan-ban-niang', {
                 theme: [
@@ -39,9 +42,7 @@ module.exports = {
                 messageStyle: { right: '68px', bottom: '290px' },
                 width: 250,
                 height: 320
-            }
-        ],
-
+        }],
     ],
   "theme": "reco",
   "themeConfig": {
@@ -75,7 +76,7 @@ module.exports = {
     //     ]
     //   },
     ],
-    sidebar,
+      sidebar,
     "type": "blog",
     "blogConfig": {
       "category": {
@@ -89,11 +90,11 @@ module.exports = {
     },
     "friendLink": [
       {
-        "title": "vuepress-theme-reco",
-        "desc": "A simple and beautiful vuepress Blog & Doc theme.",
-        "avatar": "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-        "link": "https://vuepress-theme-reco.recoluan.com"
-      }
+        "title": "wepego的blog",
+        "desc": "一个小胖子的blog",
+            "avatar": "/logo.jpeg",
+            "link": "https://www.wepego.cn/"
+        }
     ],
     "logo": "/logo.jpeg",
     "search": true,
@@ -104,8 +105,20 @@ module.exports = {
     "record": "首页",
     "startYear": "2022"
   },
-  "markdown": {
-    "lineNumbers": true
+    "markdown": {
+        "lineNumbers": true, //是否启用行号功能
+      "anchor": {
+          "level": [1, 2, 3, 4, 5, 6],
+      },
+      "code": {
+          "highlightLines": true, //是否启用高亮功能
+          "lineNumbers": true, //是否启用行号功能
+          "preWrapper": true, //是否启用外包装层，上面两个选项的依赖项，启用上面两项必须启用这一项
+          "vPre": {
+              "block": true,//代码块启用v-pre标签
+              "inline": true //行内代码启用v-pre标签
+          }
+      },
     },
   "autoOpenBrowser": true,
 }

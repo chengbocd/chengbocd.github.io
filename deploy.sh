@@ -17,3 +17,6 @@ git commit -m 'deploy'
 git push -f git@github.com:chengbocd/chengbocd.github.io.git master
 
 cd -
+url=https://chengbocd.github.io
+echo $url
+open $url

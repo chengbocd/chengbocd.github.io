@@ -8,16 +8,19 @@
     "deploy": "bash deploy.sh"
   },
   "devDependencies": {
+    "@vuepress-reco/vuepress-plugin-bulletin-popover": "^1.6.13",
     "@vuepress-reco/vuepress-plugin-kan-ban-niang": "^1.0.5",
     "directory-tree": "^2.2.7",
     "vuepress": "^1.9.7",
+    "vuepress-plugin-clipboard": "^2.1.3",
     "vuepress-plugin-meting": "^0.1.1",
     "vuepress-theme-reco": "1.5.7"
   },
   "dependencies": {
     "@vuepress-reco/vuepress-plugin-bgm-player": "^1.1.4",
     "@vuepress-reco/vuepress-plugin-comments": "^1.5.7",
-    "vue-class-component": "^7.2.3"
+    "vue-class-component": "^7.2.3",
+    "vuepress-plugin-code-copy": "^1.0.6"
   },
   "description": "--- home: true heroText: dio tagline: wryyyyyyyyyyyyyyy!!! bgImageStyle: {   height: '450px' } isShowTitleInHome: false features: - title: Yesterday   details: 木大 - title: Today   details: 木大 - title: Tomorrow   details: 木大 ---",
   "main": "index.js",
