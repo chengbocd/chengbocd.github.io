@@ -132,7 +132,7 @@ type Kafka struct {
 
 var brokers = []string{"127.0.0.1:9092"}
 var topics = []string{"web_log"}
-var group = "grp3"
+var group = "grp13"
 var assignor = "range"
 var startOffset = sarama.OffsetOldest //重头开始消费
 
@@ -250,7 +250,8 @@ func (k *Kafka) ConsumeClaim(session sarama.ConsumerGroupSession, claim sarama.C
 		log.Infof("监听到[topic:%s] [partiton:%d] [offset:%d] [value:%s] [time:%v]",
 			message.Topic, message.Partition, message.Offset, string(message.Value), message.Timestamp)
 		// 更新位移 提交
-		session.MarkMessage(message, "")
+		//fmt.Println()
+		//session.MarkMessage(message, "")
 	}
 	return nil
 }

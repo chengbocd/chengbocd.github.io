@@ -746,3 +746,8 @@ order by min(date);
 ```sql
 select concat('alter table ',table_name,' rename to ',table_name) from information_schema.tables where table_name like'dmsck_%';
 ```
+### 蠕虫复制
+> sql查询语句有一个缺点，那就是一句SQL语句只能修改一张数据库的表名,如果你要精确修改某一张表，很好用。如果数据库表很多的话，比较麻烦。但是我们可以通过一条语句一次性生成所有的需要执行的sql语句：
+```sql
+INSERT INTO 表名 1(列 1, 列 2) SELECT 列 1, 列 2 FROM student;
+```
