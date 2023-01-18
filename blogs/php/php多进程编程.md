@@ -7,7 +7,7 @@ tags:
  - php
 sidebar: 'auto'
 ---
-> 有些业务场景可能需要同事调用三方接口50次甚至更多
+> 有些业务场景可能需要同时调用三方接口50次甚至更多
 >
 > 对于这样的业务可以异步编程，但是对于哪些密集型计算啥的同步耗时更短
 
@@ -81,4 +81,51 @@ function curlGet()
     return $content;
 }
 
+```
+### 使用Guzzle并发请求
+
+![img.png](/php-async/使用Guzzle并发请求.png)
+
+> 代码如下
+```php
+<?php
+require './vendor/autoload.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Pool;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
+
+$srart_time = microtime(TRUE);
+$client = new Client();
+
+$requests = function ($total) {
+    $uri = 'xxx.com/api/getCity';
+    for ($i = 0; $i < $total; $i++) {
+        yield new Request('GET', $uri);
+    }
+};
+
+$d = [];
+$pool = new Pool($client, $requests(100), [
+    'concurrency' => 5,
+    'fulfilled' => function (Response $response, $index) use (&$d) {
+        // 这是每次成功的响应传递的
+        $d[] = $response->getBody()->getContents();
+    },
+    'rejected' => function (RequestException $reason, $index) use (&$d) {
+        // 这是每个失败的请求传递的
+        $d[] = $reason->getMessage();
+    },
+]);
+
+// 启动传输并创建一个promise
+$promise = $pool->promise();
+
+// 强制完成请求池。
+$promise->wait();
+$end_time = microtime(TRUE);
+echo sprintf("use time:%.3f s", $end_time - $srart_time);
+print_r($d);
 ```

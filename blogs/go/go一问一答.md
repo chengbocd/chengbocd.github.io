@@ -1,5 +1,5 @@
 ---
-title: go一问一答
+title: go一问一答96题
 date: 2020-07-01
 categories:
  - go

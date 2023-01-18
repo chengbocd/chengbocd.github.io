@@ -57,7 +57,7 @@ GET index_user_latest/_search
 } 
 ```
 以上两种情况都会导致以下查询错误的情况
-![image.png](/其他/es深度分页报错.png)
+![image.png](/other/es深度分页报错.png)
 
 ## 解决方案 
 深度分页的解决方案主要有以下几种
