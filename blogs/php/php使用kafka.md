@@ -58,42 +58,67 @@ var_dump($re);
 ## 消费者
 ```php
 <?php
-require './vendor/autoload.php';
-$conf = new RdKafka\Conf();
-$conf->set('group.id', 'myConsumerGroup');
+$conf = new \RdKafka\Conf();
+
+// 绑定消费者组
+
+$conf->set('group.id', 'test0007');
+
+// 绑定服务节点，多个用,分隔
+
+$conf->set('metadata.broker.list', '127.0.0.1:9092');
+
+// 设置自动提交为false
+
 $conf->set('enable.auto.commit', 'false');
-$rk = new RdKafka\Consumer($conf);
-$rk->addBrokers('127.0.0.1:9092');
 
-$topicConf = new RdKafka\TopicConf();
-$topicConf->set('auto.offset.reset', 'earliest');
+// 设置当前消费者拉取数据时的偏移量， 可选参数：
 
-$topic = $rk->newTopic('web_log', $topicConf);
+// earliest: 如果消费者组是新创建的，从头开始消费，否则从消费者组当前消费位移开始。
 
-$topic->consumeStart(0, RD_KAFKA_OFFSET_STORED);
+// latest:如果消费者组是新创建的，从最新偏移量开始，否则从消费者组当前消费位移开始。
+
+$conf->set('auto.offset.reset', 'earliest');
+
+
+// 创建消费者实例
+
+$consumer = new \RdKafka\KafkaConsumer($conf);
+
+// 消费者订阅主题，数组形式
+
+$consumer->subscribe(['web_log']);
 
 while (true) {
-    $message = $topic->consume(0, 500);
-    if ($message !== null) {
-        switch ($message->err) {
-            case RD_KAFKA_RESP_ERR_NO_ERROR:
-                // 业务逻辑
-                var_dump("offset:".$message->offset);
-                var_dump("v:".$message->payload);
-                // 提交位移
-//            $consumer->commit($message);
-                break;
-            case RD_KAFKA_RESP_ERR__PARTITION_EOF:
-                echo "No more messages; will wait for more\n";
-                break;
-            case RD_KAFKA_RESP_ERR__TIMED_OUT:
-                echo "Timed out\n";
-                break;
-            default:
-                throw new \Exception($message->errstr(), $message->err);
-                break;
-        }
+
+    // 消费数据，阻塞5秒(5秒内有数据就消费，没有数据等待5秒进入下一轮循环) 500ms
+
+    $message = $consumer->consume(500);
+
+    switch ($message->err) {
+
+        case RD_KAFKA_RESP_ERR_NO_ERROR:
+            // 业务逻辑
+            var_dump("offset:".$message->offset);
+            var_dump("v:".$message->payload);
+            // 提交位移
+            $consumer->commit($message);
+            break;
+
+        case RD_KAFKA_RESP_ERR__PARTITION_EOF:
+            echo "No more messages; will wait for more\n";
+            break;
+        case RD_KAFKA_RESP_ERR__TIMED_OUT:
+            // echo "Timed out\n";
+            break;
+        default:
+            throw new \Exception($message->errstr(), $message->err);
+            break;
     }
 }
+
+// 关闭消费者(一般用在脚本中，不需要关闭)
+
+$conumser->close();
 
 ```
