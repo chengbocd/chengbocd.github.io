@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "wb",
   "scripts": {
-    "dev": "vuepress dev . --host \"localhost\" --port 79",
+    "dev": "vuepress dev . --host \"localhost\" ",
     "build": "vuepress build .",
     "run": "bash run.sh"
   },
