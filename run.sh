@@ -31,11 +31,19 @@ fi
 # 打包生成静态文件 推送到远程
 npm run build
 
-# 进入打包好的文件夹
-cd public
-# 确保本地有 master 分支，如果没有则创建并关联到远程 master
-git checkout -b master origin/master || git checkout master
-git pull origin master --rebase # 获取最新远程 master 分支的变动
+# 初始化本地仓库
+git init
+
+# 添加远程仓库地址
+git remote add origin git@github.com:chengbocd/chengbocd.github.io.git
+
+# 检查远程仓库是否存在master分支，如果存在则检出或创建本地master分支并跟踪远程master
+git fetch origin master
+if [ $? -eq 0 ]; then
+    git checkout -B master origin/master
+else
+    echo "远程仓库没有master分支，这可能导致推送失败。"
+fi
 
 # 创建git的本地仓库，提交修改
 git init
