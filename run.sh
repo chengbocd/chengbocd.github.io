@@ -33,6 +33,9 @@ npm run build
 
 # 进入打包好的文件夹
 cd public
+# 确保本地有 master 分支，如果没有则创建并关联到远程 master
+git checkout -b master origin/master || git checkout master
+git pull origin master --rebase # 获取最新远程 master 分支的变动
 
 # 创建git的本地仓库，提交修改
 git init
