@@ -35,6 +35,8 @@ npm run build
 cd public
 
 # 添加所有文件到暂存区（无需再次初始化仓库）
+git init 
+git checkout -b master
 git add -A
 
 # 提交更改
