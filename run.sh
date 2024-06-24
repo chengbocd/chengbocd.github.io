@@ -34,14 +34,6 @@ npm run build
 # 进入打包好的文件夹
 cd public
 
-# 检查远程仓库是否存在master分支，如果存在则检出或创建本地master分支并跟踪远程master
-git fetch origin master
-if [ $? -eq 0 ]; then
-    git checkout -B master origin/master
-else
-    echo "远程仓库没有master分支，这可能导致推送失败。"
-fi
-
 # 添加所有文件到暂存区（无需再次初始化仓库）
 git add -A
 
