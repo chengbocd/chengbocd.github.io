@@ -31,11 +31,8 @@ fi
 # 打包生成静态文件 推送到远程
 npm run build
 
-# 初始化本地仓库
-git init
-
-# 添加远程仓库地址
-git remote add origin git@github.com:chengbocd/chengbocd.github.io.git
+# 进入打包好的文件夹
+cd public
 
 # 检查远程仓库是否存在master分支，如果存在则检出或创建本地master分支并跟踪远程master
 git fetch origin master
@@ -45,13 +42,13 @@ else
     echo "远程仓库没有master分支，这可能导致推送失败。"
 fi
 
-# 创建git的本地仓库，提交修改
-git init
+# 添加所有文件到暂存区（无需再次初始化仓库）
 git add -A
+
+# 提交更改
 git commit -m 'deploy'
 
-# 覆盖式地将本地仓库发布至github，因为发布不需要保留历史记录
-# 格式为：git push -f git@github.com:'用户名'/'仓库名'.git master
+# 覆盖式地将本地仓库发布至github
 git push -f git@github.com:chengbocd/chengbocd.github.io.git master
 
 
